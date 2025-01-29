@@ -18,7 +18,7 @@
 # See http://www.salome-platform.org/ or email : webmaster.salome@opencascade.com
 #
 from . import sample
-import py2yacs
+from salome.yacs import py2yacs
 
 class PyScriptException(Exception):
   pass

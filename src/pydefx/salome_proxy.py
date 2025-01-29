@@ -1,7 +1,7 @@
-import salome
-import pylauncher
+from salome.kernel import salome
+from salome.kernel import pylauncher
 import os
-from SALOME import SALOME_Exception
+from salome.kernel.SALOME import SALOME_Exception
 from .studyexception import StudyRunException
 
 _use_salome_servers = None
@@ -26,14 +26,15 @@ def forceNoSalomeServers():
   _use_salome_servers = False
 
 def createSalomeParameters():
+  from salome.kernel.LifeCycleCORBA import JobParameters, ResourceParameters
   _default()
   if _use_salome_servers:
-    result = salome.JobParameters()
-    result.resource_required = salome.ResourceParameters()
+    result = JobParameters()
+    result.resource_required = ResourceParameters()
   else:
     result = pylauncher.JobParameters_cpp()
   return result
-
+  
 _resourceManager = None
 def getResourcesManager():
   global _resourceManager
