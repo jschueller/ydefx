@@ -1,4 +1,4 @@
-import SALOMERuntime
+from salome.yacs import SALOMERuntime
 import pickle
 import json
 import importlib
